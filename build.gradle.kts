@@ -2,7 +2,7 @@ plugins {
     `java-library`
     `maven-publish`
     idea
-    id("net.neoforged.moddev") version "2.0.140"
+    id("net.neoforged.moddev") version "2.0.141"
 }
 
 val mcVersion = project.property("minecraft_version") as String
@@ -24,15 +24,10 @@ tasks.named<Jar>("jar") {
     archiveFileName.set("$modName-$mcVersion-$modVersion.jar")
 }
 
-java.toolchain.languageVersion.set(JavaLanguageVersion.of(21))
+java.toolchain.languageVersion.set(JavaLanguageVersion.of(25))
 
 neoForge {
     version = project.property("neo_version") as String
-
-    parchment {
-        mappingsVersion = project.property("parchment_mappings_version") as String
-        minecraftVersion = project.property("parchment_minecraft_version") as String
-    }
 
     runs {
         register("client") {
@@ -107,7 +102,7 @@ publishing {
     }
     repositories {
         maven {
-            url = uri("file://${project.projectDir}/repo")
+            url = project.projectDir.resolve("repo").toURI()
         }
     }
 }
