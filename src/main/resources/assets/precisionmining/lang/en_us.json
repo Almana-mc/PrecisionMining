@@ -1,5 +1,6 @@
 {
   "key.categories.precisionmining": "Precision Mining",
+  "key.category.precisionmining.precisionmining": "Precision Mining",
   "key.precisionmining.toggle": "Toggle Precision Mining",
   "message.precisionmining.prefix": "Precision Mining",
   "message.precisionmining.state_on": "ON",
