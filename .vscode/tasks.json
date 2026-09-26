@@ -1,0 +1,48 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run client",
+      "type": "shell",
+      "command": "./gradlew :${input:node}:runClient",
+      "windows": { "command": ".\\gradlew.bat :${input:node}:runClient" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Build",
+      "type": "shell",
+      "command": "./gradlew :${input:node}:build",
+      "windows": { "command": ".\\gradlew.bat :${input:node}:build" },
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Build all",
+      "type": "shell",
+      "command": "./gradlew build",
+      "windows": { "command": ".\\gradlew.bat build" },
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "node",
+      "type": "pickString",
+      "description": "Minecraft version and loader",
+      "default": "26.2-neoforge",
+      "options": [
+        "26.2-fabric",
+        "26.2-neoforge",
+        "26.1.2-fabric",
+        "26.1.2-neoforge",
+        "1.21.1-fabric",
+        "1.21.1-neoforge",
+        "1.20.1-fabric",
+        "1.20.1-forge",
+        "1.20-fabric",
+        "1.20-forge"
+      ]
+    }
+  ]
+}
