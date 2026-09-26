@@ -26,5 +26,5 @@ tasks.processResources {
         mapOf("minecraft" to project.property("mod.mc_compat") as String, "java" to "JAVA_$javaVersion")
     inputs.properties(props)
     filesMatching(listOf("fabric.mod.json", "*.mixins.json")) { expand(props) }
-    exclude("META-INF/*mods.toml")
+    exclude("META-INF/*mods.toml", "pack.mcmeta")
 }

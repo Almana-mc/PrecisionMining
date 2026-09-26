@@ -37,7 +37,7 @@ tasks.processResources {
         mapOf("minecraft" to project.property("mod.mc_compat") as String, "java" to "JAVA_$javaVersion")
     inputs.properties(props)
     filesMatching(listOf("META-INF/neoforge.mods.toml", "*.mixins.json")) { expand(props) }
-    exclude("fabric.mod.json", "META-INF/mods.toml")
+    exclude("fabric.mod.json", "META-INF/mods.toml", "pack.mcmeta")
 }
 
 tasks.named("createMinecraftArtifacts") {
