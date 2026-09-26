@@ -4,7 +4,8 @@
   "compatibilityLevel": "${java}",
   "mixins": [],
   "client": [
-    "MinecraftMixin"
+    "MinecraftMixin",
+    "MultiPlayerGameModeMixin"
   ],
   "injectors": {
     "defaultRequire": 1
