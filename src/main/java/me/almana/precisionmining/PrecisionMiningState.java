@@ -2,6 +2,7 @@ package me.almana.precisionmining;
 
 public final class PrecisionMiningState {
     private static boolean enabled = true;
+    private static boolean awaitingRelease = false;
 
     private PrecisionMiningState() {
     }
@@ -13,5 +14,13 @@ public final class PrecisionMiningState {
     public static boolean toggle() {
         enabled = !enabled;
         return enabled;
+    }
+
+    public static boolean isAwaitingRelease() {
+        return awaitingRelease;
+    }
+
+    public static void setAwaitingRelease(boolean value) {
+        awaitingRelease = value;
     }
 }

@@ -1,10 +1,12 @@
 {
   "required": true,
+  "minVersion": "0.8",
   "package": "me.almana.precisionmining.mixin",
-  "compatibilityLevel": "JAVA_25",
+  "compatibilityLevel": "${java}",
   "mixins": [],
   "client": [
-    "MinecraftMixin"
+    "MinecraftMixin",
+    "MultiPlayerGameModeMixin"
   ],
   "injectors": {
     "defaultRequire": 1

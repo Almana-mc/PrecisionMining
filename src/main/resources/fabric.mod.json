@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "${id}",
+  "version": "${version}",
+  "name": "${name}",
+  "description": "${description}",
+  "authors": ["${authors}"],
+  "license": "${license}",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["me.almana.precisionmining.fabric.PrecisionMiningFabric"]
+  },
+  "mixins": ["${id}.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.15",
+    "minecraft": "${minecraft}",
+    "fabric-api": "*"
+  }
+}

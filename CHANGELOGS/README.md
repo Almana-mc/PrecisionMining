@@ -1,3 +1,5 @@
-Create one Markdown file per release named `<minecraft_version>-<mod_version>.md`.
+Create one Markdown file per mod version named `<mod_version>.md`.
 
-Example: `1.21.1-1.0.0.md`
+The same changelog is used for every Minecraft version and loader in that release.
+
+Example: `2.0.0.md`

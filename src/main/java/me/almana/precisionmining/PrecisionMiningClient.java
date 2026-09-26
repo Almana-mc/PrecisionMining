@@ -4,23 +4,24 @@ import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.Identifier;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.client.event.ClientTickEvent;
-import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import org.lwjgl.glfw.GLFW;
+//? if >=26.1
+import net.minecraft.resources.Identifier;
 
-@EventBusSubscriber(modid = Precisionmining.MODID, value = Dist.CLIENT)
 public final class PrecisionMiningClient {
-    private static final KeyMapping.Category CATEGORY = KeyMapping.Category.register(
-            Identifier.fromNamespaceAndPath(Precisionmining.MODID, "precisionmining")
-    );
+    public static final String MODID = "precisionmining";
 
-    private static final KeyMapping TOGGLE_KEY = new KeyMapping(
+    //? if >=26.1 {
+    private static final KeyMapping.Category CATEGORY = KeyMapping.Category.register(
+            Identifier.fromNamespaceAndPath(MODID, "precisionmining")
+    );
+    //?} else
+    /*private static final String CATEGORY = "key.categories.precisionmining";*/
+
+    public static final KeyMapping TOGGLE_KEY = new KeyMapping(
             "key.precisionmining.toggle",
             InputConstants.Type.KEYSYM,
             GLFW.GLFW_KEY_K,
@@ -30,18 +31,15 @@ public final class PrecisionMiningClient {
     private PrecisionMiningClient() {
     }
 
-    @SubscribeEvent
-    public static void registerKeyMappings(RegisterKeyMappingsEvent event) {
-        event.register(TOGGLE_KEY);
-    }
-
-    @SubscribeEvent
-    public static void onClientTick(ClientTickEvent.Post event) {
+    public static void tick() {
         while (TOGGLE_KEY.consumeClick()) {
             boolean enabled = PrecisionMiningState.toggle();
-            Minecraft minecraft = Minecraft.getInstance();
-            if (minecraft.player != null) {
-                minecraft.player.sendOverlayMessage(buildToggleMessage(enabled));
+            LocalPlayer player = Minecraft.getInstance().player;
+            if (player != null) {
+                //? if >=26.1 {
+                player.sendOverlayMessage(buildToggleMessage(enabled));
+                //?} else
+                /*player.displayClientMessage(buildToggleMessage(enabled), true);*/
             }
         }
     }

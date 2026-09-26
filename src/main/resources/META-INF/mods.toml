@@ -1,0 +1,18 @@
+modLoader = "javafml"
+loaderVersion = "[46,)"
+license = "${license}"
+
+[[mods]]
+modId = "${id}"
+version = "${version}"
+displayName = "${name}"
+authors = "${authors}"
+description = '''${description}'''
+displayTest = "IGNORE_ALL_VERSION"
+
+[[dependencies."${id}"]]
+modId = "minecraft"
+mandatory = true
+versionRange = "${minecraft}"
+ordering = "NONE"
+side = "BOTH"
